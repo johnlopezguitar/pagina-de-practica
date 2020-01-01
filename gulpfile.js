@@ -4,6 +4,8 @@ const sass = require('gulp-sass');
 
 const autoprefixer = require('gulp-autoprefixer');    
 
+const browserSync = require('browser-sync').create();
+
 
 function css(){
 
@@ -17,16 +19,35 @@ function css(){
        .pipe( gulp.dest('css'))
 
 
+         //browserSync
 
+        .pipe(browserSync.stream());
 
 }
 
 
+
+
+
+
+
+
 function watchArchivo()
 {
+  
+  browserSync.init(
+   {
+
+    server : {baseDir: './'}
+
+   }
+
+  ) 
+
+    
    gulp.watch('scss/*.scss', css);
-   gulp.watch('*.html');
-   
+   gulp.watch('*.html').on('change', browserSync.reload);
+   gulp.watch('js/*.js').on('change', browserSync.reload);
 }
 
 
