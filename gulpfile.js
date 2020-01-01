@@ -2,8 +2,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 
 const autoprefixer = require('gulp-autoprefixer');
-/*const browserSync = require('browser-sync');  
-const reload = browserSync.reload;*/
 
 
 function css(){
@@ -27,7 +25,7 @@ function css(){
 function watchArchivo()
 {
    gulp.watch('scss/*.scss', css);
-   gulp.watch('*.html');
+   gulp.watch('app/*.html');
    
 }
 
