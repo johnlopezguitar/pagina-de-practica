@@ -1,29 +1,38 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
 
-gulp.task('sass', function() {
-  gulp.src('scss/app.scss')
-    .pipe(autoprefixer()
-    )
-    .pipe(sass({
-      includePaths: ['scss']
-    }))
-    .pipe(gulp.dest('app/css'));
-});
+const autoprefixer = require('gulp-autoprefixer');
+/*const browserSync = require('browser-sync');  
+const reload = browserSync.reload;*/
 
-// watch Sass files for changes, run the Sass preprocessor with the 'sass' task and reload
-gulp.task('serve', ['sass'], function() {
-  browserSync.init(["app/css/*.css", "app/js/*.js", "app/*.html"], {
-    server: {
-      baseDir: 'app'
-    }
-  });
 
-});
+function css(){
 
-gulp.task('watch', ['sass', 'serve'], function() {
-  gulp.watch(["scss/*.scss"], ['sass']);
-});
+  return gulp
+     .src('scss/app.scss')
+
+      .pipe( autoprefixer())
+
+      .pipe(sass({ outputStyle : 'expanded'})) // nested, compact , expanded , compressed
+
+      .pipe( gulp.dest('css'))
+
+
+
+
+}
+
+
+
+function watchArchivo()
+{
+   gulp.watch('scss/*.scss', css);
+   gulp.watch('*.html');
+   
+}
+
+
+//tareas
+
+gulp.task('css', css);
+gulp.task('watch', gulp.parallel(watchArchivo));
