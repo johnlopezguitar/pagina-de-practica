@@ -1,5 +1,27 @@
+/*@mixin box-sizing($box-model) {
+    box-sizing: $box-model;  
+}
+*/
 body {
-  background-color: red;
+  background-color: #EEE8D6;
   color: white;
   font-size: 60px;
 }
+
+/*
+
+html{
+
+
+    @include box-sizing(border-box);
+    
+    }
+    
+    *,
+    *:after
+    *:before{
+        @include box-sizing(inherit);
+    
+    }
+
+*/

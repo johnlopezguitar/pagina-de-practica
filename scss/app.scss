@@ -1,6 +1,29 @@
+@import 'variables';
+@import 'mixins';
+
+
 body{
 
- background-color:red;
- color: white;
- font-size: 60px;
-}
+    background-color:$blanco ;
+    color: white;
+    font-size: 60px;
+   }
+/*
+
+html{
+
+
+    @include box-sizing(border-box);
+    
+    }
+    
+    *,
+    *:after
+    *:before{
+        @include box-sizing(inherit);
+    
+    }
+
+*/
+
+
